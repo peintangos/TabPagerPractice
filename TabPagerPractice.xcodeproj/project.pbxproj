@@ -15,6 +15,7 @@
 		0FB3A5D025FCCB9D00C5FE77 /* SwinjectAware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB3A5CF25FCCB9D00C5FE77 /* SwinjectAware.swift */; };
 		0FB3A5D325FCCBDC00C5FE77 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB3A5D225FCCBDC00C5FE77 /* Person.swift */; };
 		0FB3A5D725FCCE3D00C5FE77 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB3A5D625FCCE3D00C5FE77 /* ViewModel.swift */; };
+		0FD8B5B825FE188800AFA934 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD8B5B725FE188800AFA934 /* SplashViewController.swift */; };
 		50003A6E82C1D6D9400FC4A3 /* Pods_TabPagerPractice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54A6424CD5EF51A74AB3E2C6 /* Pods_TabPagerPractice.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		0FB3A5CF25FCCB9D00C5FE77 /* SwinjectAware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwinjectAware.swift; sourceTree = "<group>"; };
 		0FB3A5D225FCCBDC00C5FE77 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		0FB3A5D625FCCE3D00C5FE77 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		0FD8B5B725FE188800AFA934 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		1DAAFEEE061C9B9CFF94B6FD /* Pods-TabPagerPractice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabPagerPractice.debug.xcconfig"; path = "Target Support Files/Pods-TabPagerPractice/Pods-TabPagerPractice.debug.xcconfig"; sourceTree = "<group>"; };
 		352344B345184DABC8E3D695 /* Pods-TabPagerPractice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabPagerPractice.release.xcconfig"; path = "Target Support Files/Pods-TabPagerPractice/Pods-TabPagerPractice.release.xcconfig"; sourceTree = "<group>"; };
 		54A6424CD5EF51A74AB3E2C6 /* Pods_TabPagerPractice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TabPagerPractice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +78,7 @@
 				0FB3A5CF25FCCB9D00C5FE77 /* SwinjectAware.swift */,
 				0FB3A5D225FCCBDC00C5FE77 /* Person.swift */,
 				0FB3A5D625FCCE3D00C5FE77 /* ViewModel.swift */,
+				0FD8B5B725FE188800AFA934 /* SplashViewController.swift */,
 			);
 			path = TabPagerPractice;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				0FB3A5D325FCCBDC00C5FE77 /* Person.swift in Sources */,
 				0FB3A5AC25FCC4F300C5FE77 /* AppDelegate.swift in Sources */,
 				0FB3A5D725FCCE3D00C5FE77 /* ViewModel.swift in Sources */,
+				0FD8B5B825FE188800AFA934 /* SplashViewController.swift in Sources */,
 				0FB3A5AE25FCC4F300C5FE77 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

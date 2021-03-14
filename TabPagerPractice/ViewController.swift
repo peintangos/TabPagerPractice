@@ -31,6 +31,7 @@ class ViewController: UIViewController {
             print(login)
             print("成功")
         } failureHandler: { (eror) in
+            print("こっちにきたよ")
             let alert = UIAlertController(title: "a", message: "s", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction.init(title: "a", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
@@ -53,11 +54,13 @@ protocol APIMixin {
     associatedtype ResponseEntity:Codable
     static var defaultHeader:HTTPHeaders {get}
     static var path:String{get}
+    static var keepAlive:Bool{get set}
     static func request(parameters:Dictionary<String, Any>,completion: ((ResponseEntity) -> ())?,successHandler: ((ResponseEntity) -> ())?,failureHandler: ((Error) -> ())?)
 }
 struct LoginAPI: APIMixin {
     typealias ResponseEntity = LoginAPIResponse
     static let path = "http://localhost:8080/register"
+    static var keepAlive = true
     static let defaultHeader = [
         "Content-Type": "application/json"
     ]
@@ -66,15 +69,22 @@ struct LoginAPI: APIMixin {
 extension APIMixin {
 //    headerとかしっかり登録しないと怒られるよ。
     static func request(parameters:Dictionary<String, Any>,completion: ((ResponseEntity) -> ())? = nil,successHandler: ((ResponseEntity) -> ())?,failureHandler: ((Error) -> ())?){
-        firstly {
-            Alamofire.request(Self.path, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: defaultHeader)
-                .responseDecodable(ResponseEntity.self)
-        }.done { foo in
-            successHandler!(foo)
-        }.catch { error in
-            failureHandler!(error)
-        }
+        if keepAlive {
+            keepAlive = false
+            firstly {
+                Alamofire.request(Self.path, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: defaultHeader)
+                    .responseDecodable(ResponseEntity.self)
+            }.done { foo in
+                print("っs")
+                keepAlive = true
+                successHandler!(foo)
+            }.catch { error in
+                print("っsっd")
+                keepAlive = true
+                failureHandler!(error)
+            }
     }
+}
 }
 
 
