@@ -52,6 +52,14 @@ class SplashViewController: UIViewController {
                     //で、アニメーションが終わったらimageViewを消す
                     self.aa.removeFromSuperview()
                 })
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            let s = CustomTabBarController()
+            s.modalPresentationStyle = .fullScreen
+            s.modalTransitionStyle = .crossDissolve
+            self.present(s, animated: true, completion: nil)
+        }
+
     }
     weak var shapeLayer: CAShapeLayer?
     func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {

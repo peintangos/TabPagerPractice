@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F945F7F25FE4E2E00BB52F2 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F945F7E25FE4E2E00BB52F2 /* CustomTabBarController.swift */; };
 		0FB3A5AC25FCC4F300C5FE77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB3A5AB25FCC4F300C5FE77 /* AppDelegate.swift */; };
 		0FB3A5AE25FCC4F300C5FE77 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB3A5AD25FCC4F300C5FE77 /* SceneDelegate.swift */; };
 		0FB3A5B025FCC4F300C5FE77 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB3A5AF25FCC4F300C5FE77 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F945F7E25FE4E2E00BB52F2 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		0FB3A5A825FCC4F300C5FE77 /* TabPagerPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TabPagerPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FB3A5AB25FCC4F300C5FE77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FB3A5AD25FCC4F300C5FE77 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				0FB3A5D225FCCBDC00C5FE77 /* Person.swift */,
 				0FB3A5D625FCCE3D00C5FE77 /* ViewModel.swift */,
 				0FD8B5B725FE188800AFA934 /* SplashViewController.swift */,
+				0F945F7E25FE4E2E00BB52F2 /* CustomTabBarController.swift */,
 			);
 			path = TabPagerPractice;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 			files = (
 				0FB3A5B025FCC4F300C5FE77 /* ViewController.swift in Sources */,
 				0FB3A5D025FCCB9D00C5FE77 /* SwinjectAware.swift in Sources */,
+				0F945F7F25FE4E2E00BB52F2 /* CustomTabBarController.swift in Sources */,
 				0FB3A5D325FCCBDC00C5FE77 /* Person.swift in Sources */,
 				0FB3A5AC25FCC4F300C5FE77 /* AppDelegate.swift in Sources */,
 				0FB3A5D725FCCE3D00C5FE77 /* ViewModel.swift in Sources */,
