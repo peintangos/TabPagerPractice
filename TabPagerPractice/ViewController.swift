@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     }
     override func viewWillLayoutSubviews() {
         let parameters = [
-            "name": "090xxxxxxxx",
+            "name": "090xxxx",
             "password": "password"
         ]
         
