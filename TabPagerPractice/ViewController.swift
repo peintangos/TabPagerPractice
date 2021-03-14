@@ -21,69 +21,60 @@ class ViewController: UIViewController {
         var person:Person = container.resolve(PetOwner.self)!
         print(person.eat())
     }
-    override func viewWillAppear(_ animated: Bool) {
-        let parameters: [String: String] = [
-            "name": "bar",
-            "password": "a"
+    override func viewWillLayoutSubviews() {
+        let parameters = [
+            "name": "090xxxxxxxx",
+            "password": "password"
         ]
         
-//        firstly {
-//            Alamofire
-//                .request("http://localhost:8080", method: .post, parameters: parameters)
-//                .responseDecodable(Response.self)
-//        }.done { foo in
-//
-//            print("成功したらここに来るよ\(foo)")
-//        }.catch { error in
-//            print("失敗したらここに来るよ\(error)")
-//        }
-            LoginAPI.request(parameters: parameters) { (login) in
-                print(login)
-            } failureHandler: { (eror) in
-                print(eror)
-            }
-}
+        LoginAPI.request(parameters: parameters) { (login) in
+            print(login)
+            print("成功")
+        } failureHandler: { (eror) in
+            let alert = UIAlertController(title: "a", message: "s", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction.init(title: "a", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            print(eror)
+        }
+    }
 }
 
 struct Login: Encodable,Decodable {
     let name: String
     let password: String
 }
-struct Response: Encodable,Decodable {
-    let error: String
+struct LoginAPIResponse: Encodable,Decodable {
+    let title: String
     let status: String
     let message: String
 }
 
 protocol APIMixin {
     associatedtype ResponseEntity:Codable
+    static var defaultHeader:HTTPHeaders {get}
     static var path:String{get}
     static func request(parameters:Dictionary<String, Any>,completion: ((ResponseEntity) -> ())?,successHandler: ((ResponseEntity) -> ())?,failureHandler: ((Error) -> ())?)
 }
 struct LoginAPI: APIMixin {
-    typealias ResponseEntity = Response
-    static let path = "http://localhost:8080/login"
+    typealias ResponseEntity = LoginAPIResponse
+    static let path = "http://localhost:8080/register"
+    static let defaultHeader = [
+        "Content-Type": "application/json"
+    ]
 }
 
 extension APIMixin {
+//    headerとかしっかり登録しないと怒られるよ。
     static func request(parameters:Dictionary<String, Any>,completion: ((ResponseEntity) -> ())? = nil,successHandler: ((ResponseEntity) -> ())?,failureHandler: ((Error) -> ())?){
         firstly {
-            Alamofire
-                .request(Self.path, method: .post, parameters: parameters)
+            Alamofire.request(Self.path, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: defaultHeader)
                 .responseDecodable(ResponseEntity.self)
         }.done { foo in
             successHandler!(foo)
         }.catch { error in
             failureHandler!(error)
         }
-        Alamofire.request(Self.path).response(completionHandler: { response in
-            guard let data = response.data,
-            let entity = try? JSONDecoder().decode(ResponseEntity.self, from: data) else {
-            return
-        }
-            completion?(entity)
-    })
-}
+    }
 }
 
 
