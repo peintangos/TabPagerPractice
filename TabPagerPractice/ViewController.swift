@@ -21,21 +21,36 @@ class ViewController: UIViewController {
         var person:Person = container.resolve(PetOwner.self)!
         print(person.eat())
     }
+//    override func viewWillLayoutSubviews() {
+//        let parameters = [
+//            "name": "090xxxx",
+//            "password": "password"
+//        ]
+//
+//        LoginAPI.requestPost(parameters: parameters) { (login) in
+//            print(login)
+//            print("成功")
+//        } failureHandler: { (eror) in
+//            print("こっちにきたよ")
+//            let alert = UIAlertController(title: "a", message: "s", preferredStyle: UIAlertController.Style.alert)
+//            alert.addAction(UIAlertAction.init(title: "a", style: .default, handler: nil))
+//            self.present(alert, animated: true, completion: nil)
+//            print(eror)
+//        }
+//        LoginAPI.requetGet(parameters: nil, completion: nil, successHandler: nil, failureHandler: nil)
+//    }
     override func viewWillLayoutSubviews() {
-        let parameters = [
-            "name": "090xxxx",
-            "password": "password"
-        ]
-        
-        LoginAPI.request(parameters: parameters) { (login) in
-            print(login)
-            print("成功")
-        } failureHandler: { (eror) in
-            print("こっちにきたよ")
-            let alert = UIAlertController(title: "a", message: "s", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction.init(title: "a", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            print(eror)
+        firstly {
+            fetch()
+        }.done { (e) in
+            print(e)
+        }.catch { (e) in
+            print(e)
+        }
+    }
+    func fetch()->Promise<Void>{
+        return Promise { (s) in
+            print(s)
         }
     }
 }
@@ -55,11 +70,12 @@ protocol APIMixin {
     static var defaultHeader:HTTPHeaders {get}
     static var path:String{get}
     static var keepAlive:Bool{get set}
-    static func request(parameters:Dictionary<String, Any>,completion: ((ResponseEntity) -> ())?,successHandler: ((ResponseEntity) -> ())?,failureHandler: ((Error) -> ())?)
+    static func requestPost(parameters:Dictionary<String, Any>,completion: ((ResponseEntity) -> ())?,successHandler: ((ResponseEntity) -> ())?,failureHandler: ((Error) -> ())?)
 }
-struct LoginAPI: APIMixin {
+struct LoginAPI: APIMixin {    
     typealias ResponseEntity = LoginAPIResponse
     static let path = "http://localhost:8080/register"
+//    何度もリクエストを送ってしまうことがある。
     static var keepAlive = true
     static let defaultHeader = [
         "Content-Type": "application/json"
@@ -68,7 +84,7 @@ struct LoginAPI: APIMixin {
 
 extension APIMixin {
 //    headerとかしっかり登録しないと怒られるよ。
-    static func request(parameters:Dictionary<String, Any>,completion: ((ResponseEntity) -> ())? = nil,successHandler: ((ResponseEntity) -> ())?,failureHandler: ((Error) -> ())?){
+    static func requestPost(parameters:Dictionary<String, Any>,completion: ((ResponseEntity) -> ())? = nil,successHandler: ((ResponseEntity) -> ())?,failureHandler: ((Error) -> ())?){
         if keepAlive {
             keepAlive = false
             firstly {
@@ -78,13 +94,15 @@ extension APIMixin {
                 print("っs")
                 keepAlive = true
                 successHandler!(foo)
+            }.map{
+                $0.self
             }.catch { error in
-                print("っsっd")
                 keepAlive = true
                 failureHandler!(error)
             }
     }
 }
+
 }
 
 
