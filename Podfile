@@ -11,7 +11,8 @@ target 'TabPagerPractice' do
   pod 'PromiseKit', '~> 6.8'
   pod 'Swinject'
   pod 'YogaKit', '~> 1.5'
-  pod 'PromiseKit/Alamofire',' ~> 4.0'
+  pod 'PromiseKit/Alamofire',' ~> 6.0'
+  pod 'IGListKit', '~> 4.0.0'
 platform :ios, '9.0'  
   # Pods for TabPagerPractice
 
