@@ -7,8 +7,19 @@
 
 import UIKit
 import RxSwift
+import PromiseKit
 
 class SplashViewController: UIViewController {
+    func login() -> Promise<Void>{
+        return Promise{_ in
+            print("d")
+        }
+    }
+    func logins() -> Promise<String>{
+        return Promise{_ in
+            print("d")
+        }
+    }
 //    var imageView: UIImageView!
     var label:UILabel!
     var aa:UIView!
@@ -46,7 +57,9 @@ class SplashViewController: UIViewController {
                        delay: 1.1,
                                options: UIView.AnimationOptions.curveEaseOut,
                                animations: { () in
-                                self.aa.transform = CGAffineTransform(scaleX: 8.0, y: 8.0)
+                                self.aa.layer.transform = CATransform3DMakeScale(8, 8, 1)
+//                                    CGAffineTransform(scaleX: 6.0, y: 6.0)
+//                                self.aa.transform = CGAffineTransform(scaleX: 6.0, y: 6.0)
                                 self.aa.alpha = 0
                 }, completion: { (Bool) in
                     //で、アニメーションが終わったらimageViewを消す
@@ -107,7 +120,6 @@ class SplashViewController: UIViewController {
             animation2.fromValue = 0
             animation2.duration = 1
             shapeLayer2.add(animation2, forKey: "MyAnimation2")
-
         }
         }    }
     
